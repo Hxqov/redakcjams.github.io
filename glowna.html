@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+Strona tworzona w celach humorystyczny, i nie ma na celu nikogo uraźić!
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -87,7 +88,7 @@
     <p class="highlight">WAŻNE</p>
     <div class="container">
         <div class="reportaz">
-            <h2>Mateusz S. u fryzjera – Niespodziewana zmiana!</h2>
+            <h2>Mateusz  u fryzjera – Niespodziewana zmiana!</h2>
             <p>Dnia 13-14 listopada 2024 roku, Mateusz S. (znany również jako Stefan) postanowił dokonać nieoczekiwanej zmiany – udał się do fryzjera. Decyzja ta wywołała ogromne zdziwienie wśród jego znajomych oraz w lokalnej społeczności.</p>
             <p>Stefan, przez lata kojarzony z jednym, niezmiennym stylem, postawił na odważny krok. Krótkie, starannie zaczesane włosy i lekki zarost – to nowy look, który zupełnie odmienił jego wygląd. "Nie mogłam uwierzyć, kiedy go zobaczyłam" – mówi jedna z klientek fryzjerskiego salonu.</p>
         </div>
@@ -137,11 +138,120 @@
         }
     </style>
 </head>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            font-size: 50px;
+            color: #444;
+            margin-top: 20px;
+        }
+        .post {
+            background-color: #f1f1f1;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        hr {
+            margin: 20px auto;
+            width: 80%;
+            border: none;
+            height: 2px;
+            background: #ccc;
+        }
+    </style>
+</head>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            font-size: 50px;
+            color: #444;
+            margin-top: 20px;
+        }
+        .post {
+            background-color: #f1f1f1;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        hr {
+            margin: 20px auto;
+            width: 80%;
+            border: none;
+            height: 2px;
+            background: #ccc;
+        }
+        .post-actions {
+            margin-top: 10px;
+        }
+        .edit-button, .delete-button {
+            padding: 5px 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .edit-button {
+            background-color: #ffc107;
+            color: white;
+            border: none;
+        }
+        .edit-button:hover {
+            background-color: #e0a800;
+        }
+        .delete-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+        .like-button {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: none;
+        }
+        .like-button:hover {
+            background-color: #218838;
+        }
+        .sort-options {
+            margin: 20px;
+        }
+    </style>
+</head>
 <body>
-    <h1>Posty użytkowników</h1>
+    <h1>Strona Główna</h1>
     <hr>
 
     <button><a href="dlaredakcji.html" style="text-decoration: none; color: white; background-color: #007BFF; padding: 10px 20px; border-radius: 0;">Dodaj Post</a></button>
+
+    <div class="sort-options">
+        <h3>Sortowanie postów:</h3>
+        <button onclick="sortPostsByDate()">Sortuj po dacie</button>
+        <button onclick="sortPostsByTitle()">Sortuj po tytule</button>
+    </div>
 
     <div id="postsContainer">
         <h2>Posty:</h2>
@@ -161,11 +271,72 @@
                 postDiv.innerHTML = `
                     <h3>${post.title}</h3>
                     <p><strong>Kategoria:</strong> ${post.category}</p>
+                    <p><strong>Autor:</strong> ${post.nickname}</p>
                     <p><strong>Data:</strong> ${post.date}</p>
                     <p>${post.content}</p>
+                    <div class="post-actions">
+                        <button class="like-button" onclick="likePost(${index})">Lubię to</button>
+                        <button class="edit-button" onclick="editPost(${index})">Edytuj</button>
+                        <button class="delete-button" onclick="deletePost(${index})">Usuń</button>
+                    </div>
+                    <p><strong>Liczba polubień:</strong> ${post.likes || 0}</p>
                 `;
                 postsContainer.appendChild(postDiv);
             });
+        }
+
+        // Funkcja do dodawania polubień do posta
+        function likePost(postIndex) {
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts[postIndex].likes = (posts[postIndex].likes || 0) + 1; // Zwiększ liczbę polubień
+            localStorage.setItem('posts', JSON.stringify(posts));  // Zapisz zaktualizowaną listę postów
+            loadPosts();  // Przeładuj posty
+        }
+
+        // Funkcja do edytowania posta
+        function editPost(postIndex) {
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+            const post = posts[postIndex];
+
+            const newTitle = prompt("Edytuj tytuł:", post.title);
+            const newContent = prompt("Edytuj treść posta:", post.content);
+
+            if (newTitle && newContent) {
+                post.title = newTitle;
+                post.content = newContent;
+                localStorage.setItem('posts', JSON.stringify(posts));  // Zapisz zaktualizowaną listę postów
+                loadPosts();  // Przeładuj posty
+            }
+        }
+
+        // Funkcja do usuwania postów
+        function deletePost(postIndex) {
+            const password = prompt("Podaj hasło, aby usunąć post:");
+
+            if (password === 'ms') {
+                let posts = JSON.parse(localStorage.getItem('posts')) || [];
+                posts.splice(postIndex, 1);  // Usuwanie posta z tablicy
+                localStorage.setItem('posts', JSON.stringify(posts));  // Zapisz zaktualizowaną listę postów
+                loadPosts();  // Przeładuj posty
+            } else {
+                alert("Niepoprawne hasło!");
+            }
+        }
+
+        // Funkcja do sortowania postów po dacie
+        function sortPostsByDate() {
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.sort((a, b) => new Date(b.date) - new Date(a.date));  // Sortowanie po dacie
+            localStorage.setItem('posts', JSON.stringify(posts));  // Zapisz posortowane posty
+            loadPosts();  // Przeładuj posty
+        }
+
+        // Funkcja do sortowania postów po tytule
+        function sortPostsByTitle() {
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.sort((a, b) => a.title.localeCompare(b.title));  // Sortowanie po tytule
+            localStorage.setItem('posts', JSON.stringify(posts));  // Zapisz posortowane posty
+            loadPosts();  // Przeładuj posty
         }
 
         // Ładuj posty przy załadowaniu strony
@@ -173,4 +344,6 @@
     </script>
 </body>
 </html>
+
+
 

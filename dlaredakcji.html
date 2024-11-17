@@ -46,19 +46,8 @@
         button.add-post:hover {
             background-color: #218838;
         }
-        button.delete-post {
-            padding: 10px 20px;
-            background-color: #dc3545;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 0;
-        }
-        button.delete-post:hover {
-            background-color: #c82333;
-        }
         hr {
-            margin: 20px auto;
+            margin-top: 20px;
             width: 80%;
             border: none;
             height: 2px;
@@ -67,93 +56,46 @@
     </style>
 </head>
 <body>
-    <h1>Dodawanie Postów</h1>
-    <hr>
-
-    <button><a href="glowna.html" style="text-decoration: none; color: white; background-color: #007BFF; padding: 10px 20px; border-radius: 0;">Powrót do Strony Głównej</a></button>
+    <h1>Dodaj Post</h1>
 
     <div class="post-form">
-        <h2>Dodaj Post:</h2>
-        <input type="text" id="postTitle" placeholder="Tytuł posta"><br>
-        <textarea id="newPost" placeholder="Wpisz treść swojego postu..."></textarea><br>
-        <select id="postCategory">
-            <option value="Ważne">Ważne</option>
-            <option value="Ogłoszenia">Ogłoszenia</option>
-            <option value="Inne">Inne</option>
+        <input type="text" id="nickname" placeholder="Twój nick" required><br>
+        <input type="text" id="title" placeholder="Tytuł posta" required><br>
+        <textarea id="content" rows="4" placeholder="Treść posta" required></textarea><br>
+        <select id="category">
+            <option value="Technologia">Technologia</option>
+            <option value="Edukacja">Edukacja</option>
+            <option value="Rozrywka">Rozrywka</option>
         </select><br>
         <button class="add-post" onclick="addPost()">Dodaj Post</button>
     </div>
 
     <hr>
-    <h2>Usuń Post:</h2>
-    <div id="postsContainerToDelete">
-        <!-- Lista postów do usunięcia -->
-    </div>
 
     <script>
-        const correctPassword = 'ms';  // Hasło do usuwania postów
-
-        // Funkcja do dodawania postów do strony
         function addPost() {
-            const postTitle = document.getElementById('postTitle').value;
-            const postContent = document.getElementById('newPost').value;
-            const postCategory = document.getElementById('postCategory').value;
+            const nickname = document.getElementById('nickname').value;
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const category = document.getElementById('category').value;
 
-            if (postTitle.trim() !== '' && postContent.trim() !== '') {
-                // Dodaj post do localStorage
-                let posts = JSON.parse(localStorage.getItem('posts')) || [];
-                const newPost = {
-                    title: postTitle,
-                    content: postContent,
-                    category: postCategory,
-                    date: new Date().toLocaleString() // Dodajemy datę
-                };
-                posts.push(newPost);
-                localStorage.setItem('posts', JSON.stringify(posts));
+            const date = new Date().toLocaleString();
 
-                // Wyczyść formularz
-                document.getElementById('postTitle').value = '';
-                document.getElementById('newPost').value = '';
-                loadPostsToDelete(); // Załaduj posty do usunięcia
-            }
+            const post = {
+                nickname,
+                title,
+                content,
+                category,
+                date
+            };
+
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.push(post);
+            localStorage.setItem('posts', JSON.stringify(posts));
+
+            alert("Post został dodany!");
+            window.location.href = "glowna.html";  // Przekierowanie na stronę główną
         }
-
-        // Funkcja do ładowania postów z localStorage (do wyświetlenia na stronie do usunięcia)
-        function loadPostsToDelete() {
-            const posts = JSON.parse(localStorage.getItem('posts')) || [];
-            const postsContainer = document.getElementById('postsContainerToDelete');
-            postsContainer.innerHTML = ''; // Wyczyść kontener przed dodaniem nowych postów
-
-            posts.forEach((post, index) => {
-                const postDiv = document.createElement('div');
-                postDiv.className = 'post';
-                postDiv.innerHTML = `
-                    <h3>${post.title}</h3>
-                    <p><strong>Kategoria:</strong> ${post.category}</p>
-                    <p><strong>Data:</strong> ${post.date}</p>
-                    <p>${post.content}</p>
-                    <button class="delete-post" onclick="deletePost(${index})">Usuń Post</button>
-                `;
-                postsContainer.appendChild(postDiv);
-            });
-        }
-
-        // Funkcja do usuwania postów
-        function deletePost(postIndex) {
-            const password = prompt("Podaj hasło, aby usunąć post:");
-
-            if (password === correctPassword) {
-                let posts = JSON.parse(localStorage.getItem('posts')) || [];
-                posts.splice(postIndex, 1);  // Usuwanie posta z tablicy
-                localStorage.setItem('posts', JSON.stringify(posts));  // Zapisz zaktualizowaną listę postów
-                loadPostsToDelete();  // Przeładuj posty
-            } else {
-                alert("Niepoprawne hasło!");
-            }
-        }
-
-        // Ładuj posty przy załadowaniu strony
-        window.onload = loadPostsToDelete;
     </script>
-
-</
+</body>
+</html>
