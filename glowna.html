@@ -8,42 +8,42 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
+            background-color: #f5f5f5; /* Bardzo jasny szary */
         }
         h1 {
-            font-size: 30px;
+            font-size: 28px;
+            margin-top: 30px;
             color: #333;
         }
         .buttons {
-            margin: 20px 0;
+            margin-top: 20px;
         }
         button {
-            font-size: 18px;
-            padding: 10px 20px;
+            font-size: 16px;
+            padding: 8px 16px;
             margin: 5px;
-            border: 2px solid #444;
-            border-radius: 5px;
-            background-color: #007BFF;
-            color: white;
+            border: 1px solid #ccc;
+            background-color: transparent;
             cursor: pointer;
-            transition: transform 0.2s ease, background-color 0.2s ease;
+            color: #333;
+            border-radius: 0; /* Usunięcie zaokrągleń */
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #f0f0f0;
         }
-        button:active {
-            animation: clickEffect 0.2s ease;
+        button:focus {
+            outline: none;
         }
         a {
             text-decoration: none;
-            color: white;
+            color: inherit;
         }
         .highlight {
-            color: red;
-            font-size: 25px;
-            margin: 20px 0;
+            font-size: 20px;
+            margin-top: 20px;
+            color: #444;
         }
         .container {
             display: flex;
@@ -51,39 +51,28 @@
             align-items: flex-start;
             flex-wrap: wrap;
             margin: 20px auto;
-            max-width: 1200px;
+            max-width: 1000px;
             gap: 20px;
         }
         .reportaz, .oceny {
             flex: 1 1 calc(50% - 20px);
-            background: white;
             padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             text-align: justify;
+            margin-bottom: 20px;
+            border-radius: 0; /* Usunięcie zaokrągleń */
         }
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
         }
         hr {
             margin: 20px auto;
             width: 80%;
             border: none;
-            height: 2px;
-            background: #ccc;
-        }
-        @keyframes clickEffect {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(0.9);
-            }
-            100% {
-                transform: scale(1);
-            }
+            height: 1px;
+            background: #ddd;
         }
     </style>
 </head>
@@ -98,18 +87,90 @@
     <p class="highlight">WAŻNE</p>
     <div class="container">
         <div class="reportaz">
-            <h1>Mateusz S. u fryzjera – Niespodziewana zmiana!</h1>
+            <h2>Mateusz S. u fryzjera – Niespodziewana zmiana!</h2>
             <p>Dnia 13-14 listopada 2024 roku, Mateusz S. (znany również jako Stefan) postanowił dokonać nieoczekiwanej zmiany – udał się do fryzjera. Decyzja ta wywołała ogromne zdziwienie wśród jego znajomych oraz w lokalnej społeczności.</p>
+            <p>Stefan, przez lata kojarzony z jednym, niezmiennym stylem, postawił na odważny krok. Krótkie, starannie zaczesane włosy i lekki zarost – to nowy look, który zupełnie odmienił jego wygląd. "Nie mogłam uwierzyć, kiedy go zobaczyłam" – mówi jedna z klientek fryzjerskiego salonu.</p>
         </div>
         <img src="fryzjer.jpg" alt="Fryzura Mateusza S.">
     </div>
     <hr>
     <div class="container">
         <div class="oceny">
-            <h1>Oceny z Pracy Klasowej zaskoczyły wszystkich!</h1>
-            <p>Ostatnia praca klasowa z matematyki w klasie 7b przyniosła mieszane wyniki, które wzbudziły wiele emocji zarówno wśród uczniów, jak i nauczycieli. Większość uczniów może być dumna ze swoich osiągnięć, ponieważ pojawiły się liczne oceny bardzo dobre i dobre.</p>
+            <h2>Oceny z Pracy Klasowej zaskoczyły wszystkich!</h2>
+            <p>Ostatnia praca klasowa z matematyki w klasie 7b przyniosła mieszane wyniki, które wzbudziły wiele emocji zarówno wśród uczniów, jak i nauczycieli. Większość uczniów może być dumna ze swoich osiągnięć, ponieważ pojawiły się liczne oceny bardzo dobre i dobre, co świadczy o ich zaangażowaniu i systematycznej nauce. Jednak nie obyło się bez trudniejszych momentów – kilka osób uzyskało oceny niedostateczne, co wskazuje na konieczność poświęcenia większej uwagi niektórym zagadnieniom.</p>
+            <p>Zapytani o swoje wrażenia, uczniowie 7b podzielili się różnymi opiniami. „Jestem zadowolony z wyniku, bo długo się przygotowywałem,” powiedział jeden z uczniów, który otrzymał piątkę. Inna uczennica dodała: „Było trudno, ale większość zadań udało mi się rozwiązać – jestem dumna!”.</p>
         </div>
         <img src="matematyka.jpg" alt="Matematyka">
     </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            font-size: 50px;
+            color: #444;
+            margin-top: 20px;
+        }
+        .post {
+            background-color: #f1f1f1;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        hr {
+            margin: 20px auto;
+            width: 80%;
+            border: none;
+            height: 2px;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Posty użytkowników</h1>
+    <hr>
+
+    <button><a href="dlaredakcji.html" style="text-decoration: none; color: white; background-color: #007BFF; padding: 10px 20px; border-radius: 0;">Dodaj Post</a></button>
+
+    <div id="postsContainer">
+        <h2>Posty:</h2>
+        <!-- Posty będą wyświetlane tutaj -->
+    </div>
+
+    <script>
+        // Funkcja do ładowania postów z localStorage
+        function loadPosts() {
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+            const postsContainer = document.getElementById('postsContainer');
+            postsContainer.innerHTML = '<h2>Posty:</h2>'; // Nagłówek
+
+            posts.forEach((post, index) => {
+                const postDiv = document.createElement('div');
+                postDiv.className = 'post';
+                postDiv.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p><strong>Kategoria:</strong> ${post.category}</p>
+                    <p><strong>Data:</strong> ${post.date}</p>
+                    <p>${post.content}</p>
+                `;
+                postsContainer.appendChild(postDiv);
+            });
+        }
+
+        // Ładuj posty przy załadowaniu strony
+        window.onload = loadPosts;
+    </script>
+</body>
+</html>
+

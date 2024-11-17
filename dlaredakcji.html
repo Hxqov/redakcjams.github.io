@@ -1,7 +1,159 @@
-<center><font size=15><p style="font-family: Arial">REDAKCJA MS WITA!</p></font size=15><center>
-        <button><a href="glowna.html">Powrót</a></button>
-        <hr>
-        <br>
-        <br>
-        <center><font size=15><p style="font-family: Arial">Ładowanie...</p></font size=15><center>
-        <font size=15> <progress>ladowanie</progress></font size=15>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodawanie Postów</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            font-size: 50px;
+            color: #444;
+            margin-top: 20px;
+        }
+        .post-form {
+            margin-top: 40px;
+            text-align: center;
+        }
+        textarea, input[type="text"] {
+            width: 80%;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            resize: none;
+        }
+        select {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 0;
+        }
+        button.add-post {
+            padding: 10px 20px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 0;
+        }
+        button.add-post:hover {
+            background-color: #218838;
+        }
+        button.delete-post {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 0;
+        }
+        button.delete-post:hover {
+            background-color: #c82333;
+        }
+        hr {
+            margin: 20px auto;
+            width: 80%;
+            border: none;
+            height: 2px;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dodawanie Postów</h1>
+    <hr>
+
+    <button><a href="glowna.html" style="text-decoration: none; color: white; background-color: #007BFF; padding: 10px 20px; border-radius: 0;">Powrót do Strony Głównej</a></button>
+
+    <div class="post-form">
+        <h2>Dodaj Post:</h2>
+        <input type="text" id="postTitle" placeholder="Tytuł posta"><br>
+        <textarea id="newPost" placeholder="Wpisz treść swojego postu..."></textarea><br>
+        <select id="postCategory">
+            <option value="Ważne">Ważne</option>
+            <option value="Ogłoszenia">Ogłoszenia</option>
+            <option value="Inne">Inne</option>
+        </select><br>
+        <button class="add-post" onclick="addPost()">Dodaj Post</button>
+    </div>
+
+    <hr>
+    <h2>Usuń Post:</h2>
+    <div id="postsContainerToDelete">
+        <!-- Lista postów do usunięcia -->
+    </div>
+
+    <script>
+        const correctPassword = 'ms';  // Hasło do usuwania postów
+
+        // Funkcja do dodawania postów do strony
+        function addPost() {
+            const postTitle = document.getElementById('postTitle').value;
+            const postContent = document.getElementById('newPost').value;
+            const postCategory = document.getElementById('postCategory').value;
+
+            if (postTitle.trim() !== '' && postContent.trim() !== '') {
+                // Dodaj post do localStorage
+                let posts = JSON.parse(localStorage.getItem('posts')) || [];
+                const newPost = {
+                    title: postTitle,
+                    content: postContent,
+                    category: postCategory,
+                    date: new Date().toLocaleString() // Dodajemy datę
+                };
+                posts.push(newPost);
+                localStorage.setItem('posts', JSON.stringify(posts));
+
+                // Wyczyść formularz
+                document.getElementById('postTitle').value = '';
+                document.getElementById('newPost').value = '';
+                loadPostsToDelete(); // Załaduj posty do usunięcia
+            }
+        }
+
+        // Funkcja do ładowania postów z localStorage (do wyświetlenia na stronie do usunięcia)
+        function loadPostsToDelete() {
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+            const postsContainer = document.getElementById('postsContainerToDelete');
+            postsContainer.innerHTML = ''; // Wyczyść kontener przed dodaniem nowych postów
+
+            posts.forEach((post, index) => {
+                const postDiv = document.createElement('div');
+                postDiv.className = 'post';
+                postDiv.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p><strong>Kategoria:</strong> ${post.category}</p>
+                    <p><strong>Data:</strong> ${post.date}</p>
+                    <p>${post.content}</p>
+                    <button class="delete-post" onclick="deletePost(${index})">Usuń Post</button>
+                `;
+                postsContainer.appendChild(postDiv);
+            });
+        }
+
+        // Funkcja do usuwania postów
+        function deletePost(postIndex) {
+            const password = prompt("Podaj hasło, aby usunąć post:");
+
+            if (password === correctPassword) {
+                let posts = JSON.parse(localStorage.getItem('posts')) || [];
+                posts.splice(postIndex, 1);  // Usuwanie posta z tablicy
+                localStorage.setItem('posts', JSON.stringify(posts));  // Zapisz zaktualizowaną listę postów
+                loadPostsToDelete();  // Przeładuj posty
+            } else {
+                alert("Niepoprawne hasło!");
+            }
+        }
+
+        // Ładuj posty przy załadowaniu strony
+        window.onload = loadPostsToDelete;
+    </script>
+
+</

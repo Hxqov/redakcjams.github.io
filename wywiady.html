@@ -23,12 +23,13 @@
             margin-top: 20px;
             background-color: #007BFF;
             color: white;
-            border: none;
-            border-radius: 5px;
+            border: 1px solid #007BFF;
             cursor: pointer;
+            border-radius: 0; /* Usunięte zaokrąglenia */
         }
         button:hover {
             background-color: #0056b3;
+            border: 1px solid #0056b3;
         }
         a {
             text-decoration: none;
@@ -48,6 +49,12 @@
                 opacity: 1;
             }
         }
+        progress {
+            width: 80%; /* Ustawienie szerokości paska postępu */
+            margin-top: 20px;
+            height: 20px;
+            border-radius: 0; /* Usunięte zaokrąglenia */
+        }
     </style>
 </head>
 <body>
@@ -56,11 +63,12 @@
     <hr>
     <button><a href="glowna.html">Powrót</a></button>
 
+    <br><br><br>
+    <font size="15">W trakcie prac</font>
+    <br>
+    <progress value="5" max="30">ciostam</progress>
+    <br>
+    <p>Progress: 20%</p>
+
 </body>
 </html>
-<br>
-<br>
-<br>
-<font size=15>W trakcie prac</font size=15>
-<font size=15><center><progress value="5" max="30">ciostam</progress><center></font size=15>
-    Progress : 20%
