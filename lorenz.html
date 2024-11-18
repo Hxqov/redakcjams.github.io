@@ -1,93 +1,153 @@
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-        background-color: #f5f5f5; /* Bardzo jasny szary */
-    }
-    h1 {
-        font-size: 28px;
-        margin-top: 30px;
-        color: #333;
-    }
-    .buttons {
-        margin-top: 20px;
-    }
-    button {
-        font-size: 16px;
-        padding: 8px 16px;
-        margin: 5px;
-        border: 1px solid #ccc;
-        background-color: transparent;
-        cursor: pointer;
-        color: #333;
-        border-radius: 0; /* Usunięcie zaokrągleń */
-    }
-    button:hover {
-        background-color: #f0f0f0;
-    }
-    button:focus {
-        outline: none;
-    }
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
-    .highlight {
-        font-size: 20px;
-        margin-top: 20px;
-        color: #444;
-    }
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        margin: 20px auto;
-        max-width: 1000px;
-        gap: 20px;
-    }
-    .wywiad, .oceny {
-        flex: 1 1 calc(50% - 20px);
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        text-align: justify;
-        margin-bottom: 20px;
-        border-radius: 0; /* Usunięcie zaokrągleń */
-    }
-    img {
-        max-width: 10%;
-        height: auto;
-    }
-    hr {
-        margin: 20px auto;
-        width: 80%;
-        border: none;
-        height: 1px;
-        background: #ddd;
-    }
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wywiad z Nikolą L.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            font-size: 28px;
+            margin-top: 30px;
+            color: #333;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 16px;
+            padding: 8px 16px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            background-color: transparent;
+            cursor: pointer;
+            color: #333;
+            border-radius: 0;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.1);
+            animation: pulse 1s infinite;
+        }
+        button:focus {
+            outline: none;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .highlight {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #444;
+            animation: highlight 1s ease-in-out infinite alternate;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes pulse {
+            0% {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+            100% {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+        @keyframes highlight {
+            0% {
+                color: #444;
+            }
+            100% {
+                color: #f39c12;
+            }
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin: 20px auto;
+            max-width: 1000px;
+            gap: 20px;
+        }
+        .wywiad, .oceny {
+            flex: 1 1 calc(50% - 20px);
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+            margin-bottom: 20px;
+            border-radius: 0;
+            animation: slideIn 1s ease-out;
+            opacity: 0;
+        }
+        .wywiad, .oceny {
+            opacity: 1;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        img {
+            max-width: 10%;
+            height: auto;
+            animation: fadeIn 2s ease-in-out;
+        }
+        hr {
+            margin: 20px auto;
+            width: 80%;
+            border: none;
+            height: 1px;
+            background: #ddd;
+        }
     </style>
-    <img src="wywiad.png">
+</head>
+<body>
+    <img src="wywiad.png" alt="Wywiad">
+    <h1>Wywiad z Nikolą L.</h1>
     <div class="container">
         <div class="wywiad">
-<center><p>Witamy serdecznie w kolejnym wywiadzie redakcji "Mokry Stefan". Dziś mamy przyjemność porozmawiać z Nikolą L. Przejdźmy do wywiadu.</P></center>
-
-    <center>Redakcja: Dziękujemy, że znalazłeś czas, by z nami porozmawiać. Na początek – jak w kilku słowach opisałbyś to, co robisz?</center>
-    <div class="container">
+            <p>Witamy serdecznie w kolejnym wywiadzie redakcji "Mokry Stefan". Dziś mamy przyjemność porozmawiać z Nikolą L. Przejdźmy do wywiadu.</p>
+            <p><strong>Redakcja:</strong> Dziękujemy, że znalazłeś czas, by z nami porozmawiać. Na początek – jak w kilku słowach opisałbyś to, co robisz?</p>
+        </div>
         <div class="oceny">
-    
-    <p>Redakcja : Co sądzisz o naszej redakcji?</p>
-<p>Gość : Myślę że to jest to mądry projekt społczeny.</p>
-<p>Redakcja : Okej, następne pytanie</p>
-<p>Redakcja : Dlaczego zawsze śmiejecie się na lekcji "Zajęcia z wychowawca"? (LilBob). Zdjęcie w załączniku poniżej.</p>
-<p>Gość : Myślę dlatego że jest to "śmieszna lekcja". Wszystko tzn. Wszystko</p>
-<p> Redakcja : Co sądzisz o <font color="blue"> Języku Polskim</font color="blue">?</p>
-<p> Gość : Mądry język</p>
-<center>PYTANIA TRUDNE</center>
-<p> Redakcja : Jak się żyło w klasie z NB?</p>
-<p> Gość : Więc tak, przyjeżdzała do szkoły różowym rowerkiem, który prawie się połamał.</p>
-<p> Redakcja : Co gdyby nie K-POP [Czyt. Kej Pop]<button><a href="https://pl.wikipedia.org/wiki/K-pop">Czyt. Więcej</a></button> </p>
-<p> Gość : Byłabym Żugajką</p>
-<center> Dziękujemy za udział w wywiadzie, wkrótce kolejne</center>
+            <p><strong>Redakcja:</strong> Co sądzisz o naszej redakcji?</p>
+            <p><strong>Gość:</strong> Myślę, że to jest to mądry projekt społeczny.</p>
+            <p><strong>Redakcja:</strong> Okej, następne pytanie</p>
+            <p><strong>Redakcja:</strong> Dlaczego zawsze śmiejecie się na lekcji "Zajęcia z wychowawcą"? (LilBob). Zdjęcie w załączniku poniżej.</p>
+            <p><strong>Gość:</strong> Myślę, że jest to "śmieszna lekcja". Wszystko, tzn. wszystko.</p>
+            <p><strong>Redakcja:</strong> Co sądzisz o <span class="highlight">Języku Polskim</span>?</p>
+            <p><strong>Gość:</strong> Mądry język.</p>
+            <p><center><strong>PYTANIA TRUDNE</strong></center></p>
+            <p><strong>Redakcja:</strong> Jak się żyło w klasie z NB?</p>
+            <p><strong>Gość:</strong> Więc tak, przyjeżdżała do szkoły różowym rowerkiem, który prawie się połamał.</p>
+            <p><strong>Redakcja:</strong> Co gdyby nie K-POP <button><a href="https://pl.wikipedia.org/wiki/K-pop">Czyt. Więcej</a></button></p>
+            <p><strong>Gość:</strong> Byłabym Żugajką.</p>
+            <p><center><strong>Dziękujemy za udział w wywiadzie, wkrótce kolejne!</strong></center></p>
+        </div>
+    </div>
+    <hr>
+</body>
+</html>
