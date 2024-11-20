@@ -10,108 +10,72 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            min-height: 100vh;
             background-color: #f4f9ff;
             overflow-x: hidden;
         }
 
-        /* Pasek boczny */
-        .sidebar {
-            width: 250px;
+        /* Pasek nawigacji */
+        nav {
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: #fff;
-            padding: 20px;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out;
-            z-index: 2;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
-        .sidebar.hidden {
-            transform: translateX(-100%);
+        nav img {
+            height: 40px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .sidebar img {
-            width: 100%;
-            max-width: 200px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+        nav img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .sidebar img:hover {
-            transform: perspective(800px) rotateY(10deg) rotateX(5deg);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
         }
 
-        .sidebar h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-            width: 100%;
-            color: #ffdd57;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        nav ul li {
+            display: inline;
         }
 
-        .sidebar a {
+        nav ul li a {
             color: #fff;
             text-decoration: none;
             padding: 10px 15px;
-            margin: 10px 0;
-            width: 100%;
-            text-align: left;
-            display: block;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            transition: transform 0.2s, background-color 0.3s;
-        }
-
-        .sidebar a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        /* Przycisk schowania paska */
-        .toggle-button {
-            background-color: #9333ea;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            left: 10px;
             border-radius: 5px;
-            z-index: 3;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out, background-color 0.3s;
+            transition: background 0.3s;
         }
 
-        .toggle-button:hover {
-            background-color: #3b82f6;
-            transform: scale(1.1);
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         /* Główna treść */
         .content {
-            flex: 1;
             padding: 20px;
-            margin-left: 250px;
-            transition: margin-left 0.3s ease-in-out;
-        }
-
-        .content.collapsed {
-            margin-left: 0;
+            max-width: 800px; /* Ograniczenie szerokości treści */
+            margin: 0 auto;   /* Wyśrodkowanie treści */
         }
 
         .content h1 {
-            font-size: 36px;
+            font-size: 28px; /* Zmniejszony nagłówek */
             margin-bottom: 20px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
             color: #444;
+            text-align: center;
         }
 
         .post {
@@ -131,8 +95,9 @@
         }
 
         .post img {
-            max-width: 100%;
-            height: auto;
+            max-width: 100%; /* Upewnia się, że obraz nie przekracza kontenera */
+            height: auto;    /* Zachowuje proporcje obrazu */
+            max-height: 300px; /* Ogranicza maksymalną wysokość zdjęcia */
             margin-top: 10px;
             border-radius: 10px;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s;
@@ -141,6 +106,18 @@
         .post img:hover {
             transform: scale(1.05) rotate(2deg);
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .post p {
+            font-size: 14px; /* Zmniejsza rozmiar tekstu */
+            line-height: 1.5; /* Poprawia czytelność */
+            margin-top: 10px; /* Dodaje przestrzeń między akapitami */
+        }
+
+        .post h2 {
+            font-size: 20px; /* Zmniejsza rozmiar nagłówków w postach */
+            margin-bottom: 10px;
+            text-align: center; /* Wyśrodkowanie nagłówków */
         }
 
         hr {
@@ -152,44 +129,32 @@
     </style>
 </head>
 <body>
-    <!-- Pasek boczny -->
-    <div class="sidebar" id="sidebar">
+    <!-- Pasek nawigacji -->
+    <nav>
         <img src="Logo.png" alt="Logo">
-        <h2>Nawigacja</h2>
-        <a href="wywiady.html">Nasze Wywiady</a>
-        <a href="regulamin.html">Regulamin</a>
-        <a href="gra.html">Nasza Gra</a>
-    </div>
-
-    <!-- Przycisk do chowania/otwierania paska -->
-    <button class="toggle-button" id="toggleButton">≡</button>
+        <ul>
+            <li><a href="wywiady.html">Nasze Wywiady</a></li>
+            <li><a href="regulamin.html">Regulamin</a></li>
+            <li><a href="ostrywywiad.html">Ostry Wywiad</a></li>
+            <li><a href="szczerywywiad.html">Szczery Wywiad</a></li>
+        </ul>
+    </nav>
 
     <!-- Główna treść -->
-    <div class="content" id="content">
+    <div class="content">
         <h1>Witamy na naszej stronie!</h1>
         <hr>
         <div class="post">
-            <h2>Mateusz u fryzjera – Niespodziewana zmiana!</h2>
-            <p>Dnia 13-14 listopada 2024 roku, Mateusz S. (znany również jako Stefan) postanowił dokonać nieoczekiwanej zmiany – udał się do fryzjera. Decyzja ta wywołała ogromne zdziwienie wśród jego znajomych oraz w lokalnej społeczności.</p>
-            <img src="fryzjer.jpg" alt="Fryzura Mateusza S.">
+            <h2>Miejsce na twoje informacje!</h2>
+            <p>Skontaktuj się z nami w godzinach 9-16</p>
+            <img src="czas.png" alt="Fryzura Mateusza S.">
         </div>
         <hr>
         <div class="post">
-            <h2>Oceny z Pracy Klasowej zaskoczyły wszystkich!</h2>
-            <p>Ostatnia praca klasowa z matematyki w klasie 7b przyniosła mieszane wyniki, które wzbudziły wiele emocji zarówno wśród uczniów, jak i nauczycieli. Większość uczniów może być dumna ze swoich osiągnięć, ponieważ pojawiły się liczne oceny bardzo dobre i dobre, co świadczy o ich zaangażowaniu i systematycznej nauce. Jednak nie obyło się bez trudniejszych momentów – kilka osób uzyskało oceny niedostateczne, co wskazuje na konieczność poświęcenia większej uwagi niektórym zagadnieniom.</p>
-            <img src="matematyka.jpg" alt="Matematyka">
+            <h2>Nowi Reporteży w naszej redakcji!</h2>
+            <p>Jak Mogliście zauważyć, pojawiły się nowe zakładki czyli nowe treści!. Zapraszamy do obserwowania!</p>
+            <img src="wywiad1.png" alt="Matematyka">
         </div>
     </div>
-
-    <script>
-        const sidebar = document.getElementById('sidebar');
-        const content = document.getElementById('content');
-        const toggleButton = document.getElementById('toggleButton');
-
-        toggleButton.addEventListener('click', () => {
-            sidebar.classList.toggle('hidden');
-            content.classList.toggle('collapsed');
-        });
-    </script>
 </body>
 </html>

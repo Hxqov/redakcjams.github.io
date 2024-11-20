@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wywiad z Stefanem (Ps. Mateusz).</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            font-size: 28px;
+            margin-top: 30px;
+            color: #333;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 16px;
+            padding: 8px 16px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            background-color: transparent;
+            cursor: pointer;
+            color: #333;
+            border-radius: 0;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.1);
+            animation: pulse 1s infinite;
+        }
+        button:focus {
+            outline: none;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .highlight {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #444;
+            animation: highlight 1s ease-in-out infinite alternate;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes pulse {
+            0% {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+            100% {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+        @keyframes highlight {
+            0% {
+                color: #444;
+            }
+            100% {
+                color: #f39c12;
+            }
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin: 20px auto;
+            max-width: 1000px;
+            gap: 20px;
+        }
+        .wywiad, .oceny {
+            flex: 1 1 calc(50% - 20px);
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+            margin-bottom: 20px;
+            border-radius: 0;
+            animation: slideIn 1s ease-out;
+            opacity: 0;
+        }
+        .wywiad, .oceny {
+            opacity: 1;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        img {
+            max-width: 10%;
+            height: auto;
+            animation: fadeIn 2s ease-in-out;
+        }
+        hr {
+            margin: 20px auto;
+            width: 80%;
+            border: none;
+            height: 1px;
+            background: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <img src="wywiad.png" alt="Wywiad">
+    <h1>Wywiad z Stefanem (Ps. Mateusz)</h1>
+    <div class="container">
+        <div class="wywiad">
+            <p>Witamy serdecznie w drugim wywiadzie redakcji "Mokry Stefan". Dziś mamy przyjemność porozmawiać z Stefanem.</p>
+            <p><strong>Prowadzączy dziennikarz : Oskar A.</strong>
+        </div>
+        <div class="oceny">
+            <p><strong>Redakcja:</strong>Co sądzi pan o tym, że dnia 19.11.24 Pan Oskar zaczął pana kleić klejem?</p>
+            <p><strong>Gość:</strong>Umyłem się od tego kleju.</p>
+            <p><strong>Redakcja:</strong>Dobrze</p>
+            <p><strong>Redakcja:</strong>Co pan sądzi o współpracy z Fromage</p>
+            <p><strong>Gość:</strong>Myślałem o współpracy</p>
+            <p><strong>Redakcja:</strong>Czy wypadł panu <span class="highlight">Pryszcz</span>z ust?</p>
+            <p><strong>Gość:</strong>Nie wypadł, nie będę go wyciągać i iść do lekarza.</p>
+            <p><strong>Redakcja:</strong>Przyznajesz się do jedzenia glutów?</p>
+            <p><strong>Gość:</strong>Nie, ponieważ to nie gluty tylko gluciory</p>
+            <p><strong>Redakcja:</strong>Czy umyjesz kiedyś włosy?</p>
+            <p><strong>Gość:</strong>Tak, wcale nie kłamie</p>
+            <p><strong>Redakcja:</strong>Czemu chodzisz w jednej bluzie tydzień?</p>
+            <p><strong>Gość:</strong>Bo jest fajna, i lubię być brudny</p>
+            <p><strong>Redakcja:</strong>Czemu nie zawiązałeś butów gdy pani prosiła?</p>
+            <p><strong>Gość:</strong>mam wywalone w panią!</p>
+            <p><strong>Redakcja:</strong>Czy masz grzyba pod paznokciem u stopy?</p>
+            <p><strong>Gość:</strong>Nie</p>
+            <p><center><strong>Dziękujemy za udział w wywiadzie, wkrótce kolejne!</strong></center></p>
+        </div>
+    </div>
+    <hr>
+</body>
+</html>
