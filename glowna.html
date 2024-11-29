@@ -4,39 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strona Główna</title>
+    <!-- Favicon -->
+    <link rel="icon" href="logo512.png" type="image/png">
     <style>
         /* Stylowanie ogólne */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f9ff;
+            background-color: #f9f9f9;
             overflow-x: hidden;
         }
 
-        /* Pasek nawigacji */
+        /* Pasek nawigacyjny */
         nav {
-            background: linear-gradient(135deg, #3b82f6, #9333ea);
+            background: linear-gradient(90deg, #2c3e50, #16a085);
             color: #fff;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 10px 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            align-items: center;
+            padding: 15px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 1000;
         }
 
-        nav img {
-            height: 40px;
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        nav img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
         }
 
         nav ul {
@@ -56,22 +55,24 @@
             text-decoration: none;
             padding: 10px 15px;
             border-radius: 5px;
-            transition: background 0.3s;
+            font-size: 14px;
+            transition: transform 0.2s ease, background 0.3s ease;
         }
 
         nav ul li a:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
         }
 
         /* Główna treść */
         .content {
             padding: 20px;
-            max-width: 800px; /* Ograniczenie szerokości treści */
-            margin: 0 auto;   /* Wyśrodkowanie treści */
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .content h1 {
-            font-size: 28px; /* Zmniejszony nagłówek */
+            font-size: 28px;
             margin-bottom: 20px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
             color: #444;
@@ -85,39 +86,26 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: justify;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            transform: perspective(1000px) rotateY(0);
-        }
-
-        .post:hover {
-            transform: perspective(1000px) rotateY(5deg);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .post img {
-            max-width: 100%; /* Upewnia się, że obraz nie przekracza kontenera */
-            height: auto;    /* Zachowuje proporcje obrazu */
-            max-height: 300px; /* Ogranicza maksymalną wysokość zdjęcia */
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
             margin-top: 10px;
             border-radius: 10px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
-        }
-
-        .post img:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
         }
 
         .post p {
-            font-size: 14px; /* Zmniejsza rozmiar tekstu */
-            line-height: 1.5; /* Poprawia czytelność */
-            margin-top: 10px; /* Dodaje przestrzeń między akapitami */
+            font-size: 14px;
+            line-height: 1.5;
+            margin-top: 10px;
         }
 
         .post h2 {
-            font-size: 20px; /* Zmniejsza rozmiar nagłówków w postach */
+            font-size: 20px;
             margin-bottom: 10px;
-            text-align: center; /* Wyśrodkowanie nagłówków */
+            text-align: center;
         }
 
         hr {
@@ -126,17 +114,44 @@
             height: 1px;
             background: #ddd;
         }
+
+        /* Przyciski */
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .controls a {
+            display: inline-block;
+            background: linear-gradient(90deg, #3b82f6, #9333ea);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .controls a:hover {
+            background: linear-gradient(90deg, #9333ea, #3b82f6);
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
-    <!-- Pasek nawigacji -->
+    <!-- Pasek nawigacyjny -->
     <nav>
-        <img src="Logo.png" alt="Logo">
+        <div class="logo">REDAKCJA MS</div>
         <ul>
-            <li><a href="wywiady.html">Nasze Wywiady</a></li>
-            <li><a href="regulamin.html">Regulamin</a></li>
+            <li><a href="error.html">Nasze Wywiady</a></li>
             <li><a href="ostrywywiad.html">Ostry Wywiad</a></li>
             <li><a href="szczerywywiad.html">Szczery Wywiad</a></li>
+            <li><a href="bezcenzury.html">Wywiad bez cenzury</a></li>
         </ul>
     </nav>
 
@@ -145,14 +160,19 @@
         <h1>Witamy na naszej stronie!</h1>
         <hr>
         <div class="post">
-            <h2>Miejsce na twoje informacje!</h2>
-            <p>Skontaktuj się z nami w godzinach 9-16</p>
-            <img src="czas.png" alt="Fryzura Mateusza S.">
+            <h2>Zapraszamy do odsłuchu!</h2>
+            <p>Linki poniżej.</p>
+            <img src="szczerywywiad.png" alt="Szczery Wywiad">
+            <img src="ostrywywiad.png" alt="Ostry Wywiad">
+            <div class="controls">
+                <a href="szczerywywiad.html">Szczery Wywiad</a>
+                <a href="ostrywywiad.html">Ostry Wywiad</a>
+            </div>
         </div>
         <hr>
         <div class="post">
-            <h2>Nowi Reporteży w naszej redakcji!</h2>
-            <p>Jak Mogliście zauważyć, pojawiły się nowe zakładki czyli nowe treści!. Zapraszamy do obserwowania!</p>
+            <h2>Nowi Reporterzy w naszej redakcji!</h2>
+            <p>Jak mogliście zauważyć, pojawiły się nowe zakładki, czyli nowe treści! Zapraszamy do obserwowania!</p>
             <img src="wywiad1.png" alt="Matematyka">
         </div>
     </div>

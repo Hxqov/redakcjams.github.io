@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odtwarzacz Audio - Wywiad</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f9ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .audio-player {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .audio-player h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .controls button {
+            background-color: #3b82f6;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .controls button:hover {
+            background-color: #9333ea;
+            transform: scale(1.1);
+        }
+
+        .volume-control {
+            margin-top: 15px;
+        }
+
+        .volume-control label {
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .volume-control input {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="audio-player">
+        <h1>Wywiad z Wiktorem</h1>
+        <audio id="audio" src="wywiadmateusz.mp3"></audio>
+        <div class="controls">
+            <button id="play">Odtwórz</button>
+            <button id="pause">Pauza</button>
+            <button id="stop">Stop</button>
+        </div>
+        <div class="volume-control">
+            <label for="volume">Głośność:</label>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const playButton = document.getElementById('play');
+        const pauseButton = document.getElementById('pause');
+        const stopButton = document.getElementById('stop');
+        const volumeControl = document.getElementById('volume');
+
+        // Odtwarzanie
+        playButton.addEventListener('click', () => {
+            audio.play();
+        });
+
+        // Pauzowanie
+        pauseButton.addEventListener('click', () => {
+            audio.pause();
+        });
+
+        // Zatrzymanie
+        stopButton.addEventListener('click', () => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+
+        // Regulacja głośności
+        volumeControl.addEventListener('input', (event) => {
+            audio.volume = event.target.value;
+        });
+    </script>
+</body>
+</html>
